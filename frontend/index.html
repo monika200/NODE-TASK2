@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<link rel="stylesheet" href="style.css">
+<title>Document</title>
+</head>
+<body>
+    <div class="container div1">
+    <h1 class="heading">Employess Data</h1>
+    <div class="" id="root"></div>
+    <a href="http://127.0.0.1:5500/NODEJS/NODE-TASK2/index1.html"  class="btn btn-success btn-outline-dark btn-lg d-flex justify-content-center" id="button">Add Your Details</a>
+</div>
+
+    
+    <script>
+        async function getEmployee(){
+            let employeeData = await fetch("http://localhost:3001/employees");
+            let employeeDetails = await employeeData.json()
+            employeeDetails.forEach(employee => {
+        //for(let i=0;i<employeeDetails.length;i++){
+        let div3 = document.createElement("div")
+        div3.innerHTML =`<div class="card">
+        <div class="card-body d-flex justify-content-center">
+            <ul>
+                <li>Name:<span id="li1">${employee.name}</span></li>
+                <li>Age Code:<span>${employee.age}</span></li>
+                <li>Role:<span>${employee.role}</span></li>
+                <li>Address:<span>${employee.address}</span></li>
+                <li>Contact Number:<span>${employee.Contact_Number}</span></li>
+                 </ul>
+        </div>
+    </div>`
+    document.getElementById("root").appendChild(div3)   
+       
+         });
+        }
+        
+     getEmployee();
+</script>
+           <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+           <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</body>
+</html>
